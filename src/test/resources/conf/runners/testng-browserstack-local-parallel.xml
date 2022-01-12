@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel">
+    <test name="Samsung Galaxy S21">
+        <parameter name="env_cap_id" value="0"/>
+        <classes>
+            <class name="com.browserstack.test.suites.local.LocalTest"/>
+        </classes>
+    </test>
+    <test name="iPhone 12 Pro">
+        <parameter name="env_cap_id" value="1"/>
+        <classes>
+            <class name="com.browserstack.test.suites.local.LocalTest"/>
+        </classes>
+    </test>
+</suite>
