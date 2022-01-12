@@ -3,7 +3,7 @@
   "key": "BROWSERSTACK_ACCESS_KEY",
   "app.android": "BrowserStackDemoAppApk",
   "app.ios": "BrowserStackDemoAppIos",
-  "app.local": "browserstack-demoapp5.app",
+  "app.local": "browserstack-demoapp.app",
   "platformName": "iOS",
   "deviceName": "iPhone 13",
   "platformVersion": "15.2",
