@@ -1,0 +1,83 @@
+{
+  "user": "BROWSERSTACK_USERNAME",
+  "key": "BROWSERSTACK_ACCESS_KEY",
+  "app.android": "BrowserStackDemoAppApk",
+  "app.ios": "BrowserStackDemoAppIos",
+  "app.local": "browserstack-demoapp.app",
+  "platformName": "iOS",
+  "deviceName": "iPhone 13",
+  "platformVersion": "15.2",
+  "automationName": "XCUITest",
+  "tests": {
+    "parallel": {
+      "common_caps": {
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-testNG",
+        "name": "Parallel Test",
+        "browserstack.debug": "true",
+        "browserstack.networkLogs": "true",
+        "browserstack.console": "verbose"
+      },
+      "env_caps": [
+        {
+          "device": "Samsung Galaxy S21",
+          "platformName": "Android",
+          "os_version": "11.0",
+          "autoGrantPermissions": "true",
+          "gpsEnabled": "true"
+        },
+        {
+          "device": "iPhone 12 Pro",
+          "platformName": "iOS",
+          "os_version": "14",
+          "gpsEnabled": "true"
+        }
+      ]
+    },
+    "single": {
+      "common_caps": {
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-appium-testng",
+        "name": "Single Test",
+        "browserstack.debug": "true"
+      },
+      "env_caps": [
+        {
+          "device": "Samsung Galaxy S21",
+          "platformName": "Android",
+          "os_version": "11.0",
+          "autoGrantPermissions": "true",
+          "gpsEnabled": "true"
+        }
+      ]
+    },
+    "local": {
+      "application_env": "dev",
+      "application_endpoint": "http://localhost:3000",
+      "common_caps": {
+        "project": "browserstack-examples",
+        "build": "browserstack-examples-appium-testng",
+        "name": "Single Local Test",
+        "browserstack.debug": "true",
+        "browserstack.networkLogs": "true",
+        "browserstack.console": "verbose",
+        "browserstack.local": "true"
+      },
+      "env_caps": [
+        {
+          "device": "Samsung Galaxy S21",
+          "platformName": "Android",
+          "os_version": "11.0",
+          "autoGrantPermissions": "true",
+          "gpsEnabled": "true"
+        },
+        {
+          "device": "iPhone 12 Pro",
+          "platformName": "iOS",
+          "os_version": "14",
+          "gpsEnabled": "true"
+        }
+      ]
+    }
+  }
+}
