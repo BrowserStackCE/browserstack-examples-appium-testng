@@ -9,17 +9,17 @@ public class LoginFailTest extends TestBase {
 
     @Test
     public void loginFail() {
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(MobileBy.AccessibilityId("nav-signin")).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 
-        getDriver().findElement(MobileBy.AccessibilityId("username-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("username-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Accepted usernames are']", "fav_user");
 
-        getDriver().findElement(MobileBy.AccessibilityId("password-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("password-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Password for all users']", "testingisfun99");
 
-        getDriver().findElement(MobileBy.AccessibilityId("login-btn")).click();
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        Assert.assertEquals(getDriver().findElement(MobileBy.AccessibilityId("username")).getText(), "Welcome");
+        driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("username")).getText(), "Welcome");
     }
 }

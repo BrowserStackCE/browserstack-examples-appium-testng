@@ -16,53 +16,53 @@ public class OfferTest extends TestBase {
     public void checkOffersInSingapore() throws InterruptedException {
         By offersMenuItem = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Offers']") : MobileBy.id("Offers");
 
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(MobileBy.AccessibilityId("nav-signin")).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 
-        getDriver().findElement(MobileBy.AccessibilityId("username-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("username-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Accepted usernames are']", "fav_user");
 
-        getDriver().findElement(MobileBy.AccessibilityId("password-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("password-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Password for all users']", "testingisfun99");
 
-        getDriver().findElement(MobileBy.AccessibilityId("login-btn")).click();
+        driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
 
-        getDriver().setLocation(singapore);
+        driver.setLocation(singapore);
         Thread.sleep(5000); // wait, for location change
         
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(offersMenuItem).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(offersMenuItem).click();
         if (mobileHelper.isiOS()) {
-            getDriver().findElement(By.id("Allow Once")).click();
+            driver.findElement(By.id("Allow Once")).click();
         }
 
-        Assert.assertEquals(getDriver().findElements(MobileBy.AccessibilityId("offer")).size(), 3);
+        Assert.assertEquals(driver.findElements(MobileBy.AccessibilityId("offer")).size(), 3);
     }
 
     @Test
     public void checkOffersInAmsterdam() throws InterruptedException {
         By offersMenuItem = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Offers']") : MobileBy.id("Offers");
         
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(MobileBy.AccessibilityId("nav-signin")).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
         
-        getDriver().findElement(MobileBy.AccessibilityId("username-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("username-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Accepted usernames are']", "fav_user");
         
-        getDriver().findElement(MobileBy.AccessibilityId("password-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("password-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Password for all users']", "testingisfun99");
         
-        getDriver().findElement(MobileBy.AccessibilityId("login-btn")).click();
+        driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
         
-        getDriver().setLocation(amsterdam);
+        driver.setLocation(amsterdam);
         Thread.sleep(5000); // wait, for location change
         
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(offersMenuItem).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(offersMenuItem).click();
         if (mobileHelper.isiOS()) {
-            getDriver().findElement(By.id("Allow Once")).click();
+            driver.findElement(By.id("Allow Once")).click();
         }
 
-        Assert.assertTrue(getDriver().findElement(MobileBy.AccessibilityId("no-offers")).isDisplayed());
+        Assert.assertTrue(driver.findElement(MobileBy.AccessibilityId("no-offers")).isDisplayed());
     }
 }
