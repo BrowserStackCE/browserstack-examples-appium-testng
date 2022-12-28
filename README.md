@@ -56,28 +56,6 @@ This repository contains the following Selenium tests:
 - [BrowserStack](#browserstack)
 
 
-## Configuring the maximum parallel test threads for this repository
-
-For all the parallel run configuration profiles, you can configure the maximum parallel test threads by changing the settings below.
-
-- BrowserStack
-
-  Maven:
-
-  `pom.xml`
-  ```xml
-  <testng.parallel>classes</testng.parallel>
-  <testng.threadCount>5</testng.threadCount>
-  ```
-
-  Gradle:
-
-  `gradle.properties`
-  ```sh
-  testngParallel=classes
-  testngThreadCount=5
-  ```
-
 ## Test Reporting
 
 - [Allure reports](#generating-allure-reports)
@@ -102,12 +80,12 @@ This infrastructure points to running the tests on your own machine using simula
   To run the default test scenario (e.g. End to End Scenario) on your own machine, use the following command:
 
   Maven:
-    ```sh
+  ```sh
   mvn clean test -P on-prem
   ```
 
   Gradle:
-    ```sh 
+  ```sh
   gradle clean on-prem
   ```
 
@@ -176,11 +154,11 @@ This infrastructure points to running the tests on your own machine using simula
   set BROWSERSTACK_ACCESS_KEY=<browserstack-access-key>
   ```
 
-  Alternatively, you can also hardcode username and access_key objects in the [test_caps.json](resources/conf/capabilities/test_caps.json) file.
+  Alternatively, you can also hardcode username and access_key objects in the [browserstack.yml](resources/conf/capabilities/browserstack-single.yml) file.
 
 Note:
-- We have configured a list of test capabilities in the [test_caps.json](resources/conf/capabilities/test_caps.json) file. You can certainly update them based on your device test requirements.
-- The exact test capability values can be easily identified using the [Browserstack Capability Generator](https://browserstack.com/app-automate/capabilities)
+- We have configured a list of test capabilities in the [browserstack.yml](resources/conf/capabilities/browserstack-single.yml) file. You can certainly update them based on your device / browser test requirements.
+- The exact test capability values can be easily identified using the [Browserstack Capability Generator](https://browserstack.com/automate/capabilities)
 
 
 ## Running Your Tests on BrowserStack
@@ -201,11 +179,37 @@ curl -u "browserstack_username:browserstack_access_key" \
 
 More information on [Upload apps from filesystem](https://www.browserstack.com/docs/app-automate/appium/upload-app-from-filesystem), [Upload apps using public URL](https://www.browserstack.com/docs/app-automate/appium/upload-app-using-public-url) or [Define custom ID for app](https://www.browserstack.com/docs/app-automate/appium/upload-app-define-custom-id).
 
+**OR**
+
+With Browserstack SDK, all the effort is taken away from the user.
+
+All you need to do is add specify the path of you `APK` or `IPA` file in your browserstack.yml as shown below:
+```
+app: ./path/to/my/demo/app.apk
+```
+
+If your app does indeed exist in the path provided, the sdk will be able to identify it, upload it, and use it for your tests.
+
 ### Run a specific test on BrowserStack
 
-In this section, we will run a single test on an Android device on Browserstack. To change test capabilities for this configuration, please refer to the `single` object in `caps.json` file.
+In this section, we will run a single test on an Android device on Browserstack. To change test capabilities for this configuration, please refer to the `browserstack-single.yml` file in resources/conf/capabilities/
 
 - How to run the test?
+
+  - Copy the capabilities to the root of the project:
+
+    - For \*nix based and Mac machines:
+
+    ```sh
+    rm -f -- browserstack.yml
+    ln src/test/resources/conf/capabilities/browserstack-single.yml browserstack.yml
+    ```
+
+    - For Windows:
+
+    ```sh
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-single.yml browserstack.yml
+    ```
 
    - To run the default test scenario (e.g. End to End Scenario) on a BrowserStack device, use the following command:
 
@@ -240,9 +244,24 @@ In this section, we will run a single test on an Android device on Browserstack.
 
 ### Run the entire test suite in parallel on a single BrowserStack device
 
-In this section, we will run the tests in parallel on a single device on Browserstack. Refer to `single` object in `test_caps.json` file to change test capabilities for this configuration.
+In this section, we will run the tests in parallel on a single device on Browserstack. To change test capabilities for this configuration, please refer to the `browserstack-parallel.yml` file in resources/conf/capabilities/
 
 - How to run the test?
+
+  - Copy the capabilities to the root of the project:
+
+    - For \*nix based and Mac machines:
+
+    ```sh
+    rm -f -- browserstack.yml
+    ln src/test/resources/conf/capabilities/browserstack-parallel.yml browserstack.yml
+    ```
+
+    - For Windows:
+
+    ```sh
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-parallel.yml browserstack.yml
+    ```
 
   To run the entire test suite in parallel on a single BrowserStack device, use the following command:
 
@@ -265,9 +284,25 @@ In this section, we will run the tests in parallel on a single device on Browser
 
 ### Run the entire test suite in parallel on multiple BrowserStack devices
 
-In this section, we will run the tests in parallel on multiple devices on Browserstack. Refer to the `parallel` object in `caps.json` file to change test capabilities for this configuration.
+In this section, we will run the tests in parallel on multiple devices on Browserstack. To change test capabilities for this configuration, please refer to the `browserstack-parallel-devices.yml` file in resources/conf/capabilities/
 
 - How to run the test?
+
+  - Copy the capabilities to the root of the project:
+
+    - For \*nix based and Mac machines:
+
+    ```sh
+    rm -f -- browserstack.yml
+    ln src/test/resources/conf/capabilities/browserstack-parallel-devices.yml browserstack.yml
+    ```
+
+    - For Windows:
+
+    ```sh
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-parallel-devices.yml browserstack.yml
+    ```
+
 
   To run the entire test suite in parallel on multiple BrowserStack devices, use the following command:
 
@@ -293,7 +328,7 @@ In this section, we will run the tests in parallel on multiple devices on Browse
 - We will change the response of the `signin` (for the `locked_user`) API endpoint. (File to change: `pages/api/signin.js` line `43`)
   - The API endpoint respond with a specific error, `Your account has been locked.`.
   - We will change that to something generic, like: `Something went wrong.`
-- In this section, we will run a single test case that changes the API used in BrowserStack Demo app, in a wat that it interact with you local machine. Refer to the `single_local` object in `caps.json` file to change test capabilities for this configuration.
+- In this section, we will run a single test case that changes the API used in BrowserStack Demo app, in a wat that it interact with you local machine. Refer to the `browserstack-local.yml` file to change test capabilities for this configuration.
 - Note: You may need to provide additional BrowserStackLocal arguments to successfully connect your localhost environment with BrowserStack infrastructure. (e.g if you are behind firewalls, proxy or VPN).
 - Further details for successfully creating a BrowserStackLocal connection can be found here:
 
@@ -304,6 +339,21 @@ In this section, we will run the tests in parallel on multiple devices on Browse
 ### [Mobile application using local or internal environment] Run a specific test on BrowserStack using BrowserStackLocal
 
 - How to run the test?
+
+  - Copy the capabilities to the root of the project:
+
+    - For \*nix based and Mac machines:
+
+    ```sh
+    rm -f -- browserstack.yml
+    ln src/test/resources/conf/capabilities/browserstack-local.yml browserstack.yml
+    ```
+
+    - For Windows:
+
+    ```sh
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-local.yml browserstack.yml
+    ```
 
    - To run the default test scenario (e.g. End to End Scenario) on a single BrowserStack device using BrowserStackLocal, use the following command:
 
@@ -324,9 +374,24 @@ In this section, we will run the tests in parallel on multiple devices on Browse
 
 ### [Mobile application using local or internal environment] Run the entire test suite in parallel on multiple BrowserStack devices using BrowserStackLocal
 
-In this section, we will run the test cases on a mobile application using a local or internal environment in parallel on multiple devices on Browserstack. Refer to the `parallel_local` object in `caps.json` file to change test capabilities for this configuration.
+In this section, we will run the test cases on a mobile application using a local or internal environment in parallel on multiple devices on Browserstack. To change test capabilities for this configuration, please refer to the `browserstack-local-parallel-devices.yml` file in resources/conf/capabilities/
 
 - How to run the test?
+
+  - Copy the capabilities to the root of the project:
+
+    - For \*nix based and Mac machines:
+
+    ```sh
+    rm -f -- browserstack.yml
+    ln src/test/resources/conf/capabilities/browserstack-local-parallel-devices.yml browserstack.yml
+    ```
+
+    - For Windows:
+
+    ```sh
+    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-local-parallel-devices.yml browserstack.yml
+    ```
 
   To run the entire test suite in parallel on multiple BrowserStack devices using BrowserStackLocal, use the following command:
 
