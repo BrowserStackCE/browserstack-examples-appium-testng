@@ -37,6 +37,7 @@ public class TestBase {
         capabilities.setCapability("bstack:options", bstackOptions);
         driver = new AppiumDriver(new URL("https://hub.browserstack.com/wd/hub"), capabilities);
 
+        mobileHelper = new MobileHelper(driver);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 

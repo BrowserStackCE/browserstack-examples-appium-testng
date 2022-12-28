@@ -34,6 +34,8 @@ public class OfferTest extends TestBase {
         driver.findElement(offersMenuItem).click();
         if (mobileHelper.isiOS()) {
             driver.findElement(By.id("Allow Once")).click();
+        } else if (mobileHelper.isAndroid()) {
+            driver.findElement(By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button")).click();
         }
 
         Assert.assertEquals(driver.findElements(MobileBy.AccessibilityId("offer")).size(), 3);
@@ -61,6 +63,8 @@ public class OfferTest extends TestBase {
         driver.findElement(offersMenuItem).click();
         if (mobileHelper.isiOS()) {
             driver.findElement(By.id("Allow Once")).click();
+        } else if (mobileHelper.isAndroid()) {
+            driver.findElement(By.id("com.android.permissioncontroller:id/permission_allow_foreground_only_button")).click();
         }
 
         Assert.assertTrue(driver.findElement(MobileBy.AccessibilityId("no-offers")).isDisplayed());
