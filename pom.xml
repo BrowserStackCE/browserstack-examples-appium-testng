@@ -45,14 +45,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <environment>on-prem</environment>
-                    </systemPropertyVariables>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -120,6 +112,9 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
+                            <systemPropertyVariables>
+                                <on-prem>true</on-prem>
+                            </systemPropertyVariables>
                             <includes>
                                 <include>
                                     com.browserstack.test.suites.e2e.OrderTest
@@ -137,6 +132,14 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <on-prem>true</on-prem>
+                            </systemPropertyVariables>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -149,6 +152,14 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
+                            <systemPropertyVariables>
+                                <on-prem>true</on-prem>
+                            </systemPropertyVariables>
+                            <parallel>classes</parallel>
+                            <threadCount>5</threadCount>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml</suiteXmlFile>
+                            </suiteXmlFiles>
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                         </configuration>
@@ -194,6 +205,9 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
+                            <argLine>
+                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
+                            </argLine>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
                                 <testType>local</testType>
@@ -222,6 +236,9 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
+                            <argLine>
+                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
+                            </argLine>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
                                 <testType>local</testType>
@@ -278,6 +295,9 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
+                            <argLine>
+                                -javaagent:${com.browserstack:browserstack-java-sdk:jar}
+                            </argLine>
                             <systemPropertyVariables>
                                 <environment>remote</environment>
                                 <testType>parallel</testType>
