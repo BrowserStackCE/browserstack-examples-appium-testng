@@ -252,7 +252,7 @@
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-local-parallel.xml
+                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml
                                 </suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
@@ -311,7 +311,7 @@
                             <parallel>${testng.parallel}</parallel>
                             <threadCount>${testng.threadCount}</threadCount>
                             <suiteXmlFiles>
-                                <suiteXmlFile>src/test/resources/conf/runners/testng-browserstack-parallel.xml
+                                <suiteXmlFile>src/test/resources/conf/runners/testng.xml
                                 </suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>

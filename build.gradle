@@ -51,6 +51,7 @@ tasks.register('on-prem', Test) {
     } else {
         include '**/OrderTest.class'
     }
+    systemProperty "on-prem", "true"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -58,6 +59,7 @@ tasks.register('on-prem', Test) {
 
 tasks.register('on-prem-suite', Test) {
     useTestNG()
+    systemProperty "on-prem", "true"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -112,10 +114,10 @@ tasks.register('bstack-local-parallel', Test) {
 
 tasks.register('bstack-local-parallel-devices', Test) {
     useTestNG() {
-        suites 'src/test/resources/conf/runners/testng-browserstack-parallel.xml'
-        parallel project.property('testngParallel')
-        threadCount Integer.parseInt(project.property('testngThreadCount'))
-        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+        dependsOn clean
+        useDefaultListeners = true
+        suites 'src/test/resources/conf/runners/testng.xml'
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
     }
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
