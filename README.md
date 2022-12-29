@@ -190,10 +190,6 @@ app: ./path/to/my/demo/app.apk
 
 If your app does indeed exist in the path provided, the sdk will be able to identify it, upload it, and use it for your tests.
 
-Note: We have provided 2 sample `APK` files in this repository to help you run your first tests on any Android device. These are configured to be uploaded to Browserstack in the sample yml files.
-- browserstack-demoapp.apk - a sample e-commerce - shopping cart application
-- LocalSample.apk - a sample application to run Browserstack tests on local / internal environment
-
 ### Run a specific test on BrowserStack
 
 In this section, we will run a single test on an Android device on Browserstack. To change test capabilities for this configuration, please refer to the `browserstack-single.yml` file in resources/conf/capabilities/
