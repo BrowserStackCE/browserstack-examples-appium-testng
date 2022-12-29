@@ -183,7 +183,7 @@ More information on [Upload apps from filesystem](https://www.browserstack.com/d
 
 With Browserstack SDK, all the effort is taken away from the user.
 
-All you need to do is add specify the path of you `APK` or `IPA` file in your browserstack.yml as shown below:
+All you need to do is add specify the path of your `APK` or `IPA` file in your browserstack.yml as shown below:
 ```
 app: ./path/to/my/demo/app.apk
 ```

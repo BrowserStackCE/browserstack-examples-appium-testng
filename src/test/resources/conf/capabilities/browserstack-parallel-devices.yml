@@ -35,6 +35,12 @@ platforms:
   - deviceName: Samsung Galaxy S22 Ultra
     osVersion: 12.0
     platformName: android
+  - deviceName: OnePlus 9
+    osVersion: 11.0
+    platformName: android
+  - deviceName: Google Pixel 7
+    osVersion: 13.0
+    platformName: android
 
 # =======================
 # Parallels per Platform
