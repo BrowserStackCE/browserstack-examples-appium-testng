@@ -23,7 +23,7 @@ projectName: BrowserStack Samples
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
-app: ./apps/browserstack-demoapp.apk
+app: ./apps/LocalSample.apk
 
 # =======================================
 # Platforms (Browsers / Devices to test)

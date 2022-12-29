@@ -23,7 +23,7 @@ projectName: BrowserStack Samples
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
-app: ./apps/browserstack-demoapp.apk
+app: ./apps/LocalSample.apk
 
 # =======================================
 # Platforms (Browsers / Devices to test)
@@ -32,8 +32,14 @@ app: ./apps/browserstack-demoapp.apk
 # Entire list available here -> (https://www.browserstack.com/list-of-browsers-and-platforms/automate)
 
 platforms:
-  - deviceName: Samsung Galaxy S22 Ultra
+ - deviceName: Samsung Galaxy S22 Ultra
     osVersion: 12.0
+    platformName: android
+  - deviceName: OnePlus 9
+    osVersion: 11.0
+    platformName: android
+  - deviceName: Google Pixel 7
+    osVersion: 13.0
     platformName: android
 
 # =======================
