@@ -15,30 +15,30 @@ public class LocalTest extends TestBase {
     public void setLocalApi() {
         By settingsMenuItem = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Settings']") : MobileBy.id("Settings");
 
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(settingsMenuItem).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(settingsMenuItem).click();
 
-        getDriver().findElement(MobileBy.AccessibilityId("url-tab")).click();
-        getDriver().findElement(MobileBy.AccessibilityId("url-input")).clear();
-        getDriver().findElement(MobileBy.AccessibilityId("url-input")).sendKeys("http://bs-local.com:3000/api/");
-        getDriver().hideKeyboard();
-        getDriver().findElement(MobileBy.AccessibilityId("update-configuration-button")).click();
+        driver.findElement(MobileBy.AccessibilityId("url-tab")).click();
+        driver.findElement(MobileBy.AccessibilityId("url-input")).clear();
+        driver.findElement(MobileBy.AccessibilityId("url-input")).sendKeys("http://bs-local.com:3000/api/");
+        driver.hideKeyboard();
+        driver.findElement(MobileBy.AccessibilityId("update-configuration-button")).click();
     }
 
     @Test
     public void loginMessageTest() {
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(MobileBy.AccessibilityId("nav-signin")).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 
-        getDriver().findElement(MobileBy.AccessibilityId("username-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("username-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Accepted usernames are']", "locked_user");
 
-        getDriver().findElement(MobileBy.AccessibilityId("password-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("password-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Password for all users']", "testingisfun99");
 
-        getDriver().findElement(MobileBy.AccessibilityId("login-btn")).click();
+        driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
 
-        WebDriverWait wait = new WebDriverWait(getDriver(), 20);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         Assert.assertTrue(wait.until(ExpectedConditions.textToBe(MobileBy.AccessibilityId("api-error"), "Something went wrong.")));
     }
 

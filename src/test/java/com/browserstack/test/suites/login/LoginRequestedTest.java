@@ -12,8 +12,8 @@ public class LoginRequestedTest extends TestBase {
     public void navigateFavoritesLoginRequested() {
         By favouritesMenuItem = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Favourites']") : MobileBy.id("Favourites");
 
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(favouritesMenuItem).click();
-        Assert.assertTrue(getDriver().findElement(MobileBy.AccessibilityId("login-form")).isDisplayed());
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(favouritesMenuItem).click();
+        Assert.assertTrue(driver.findElement(MobileBy.AccessibilityId("login-form")).isDisplayed());
     }
 }

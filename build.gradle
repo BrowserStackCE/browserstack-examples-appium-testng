@@ -15,21 +15,28 @@ buildscript {
 }
 
 dependencies {
-    implementation 'io.appium:java-client:7.0.0'
-    implementation 'com.browserstack:browserstack-local-java:1.0.6'
-    implementation 'org.testng:testng:7.1.0'
-    implementation 'io.qameta.allure:allure-testng:2.13.8'
-    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-    implementation 'org.assertj:assertj-core:3.18.0'
-    implementation 'com.opencsv:opencsv:5.4'
-    implementation 'org.slf4j:slf4j-api:1.7.30'
-    implementation 'org.slf4j:slf4j-simple:1.7.30'
+    testImplementation 'io.appium:java-client:7.0.0'
+    compileOnly 'com.browserstack:browserstack-java-sdk:latest.release'
+    testImplementation 'com.browserstack:browserstack-local-java:1.0.6'
+    testImplementation 'org.testng:testng:7.1.0'
+    testImplementation 'io.qameta.allure:allure-testng:2.13.8'
+    testImplementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    testImplementation 'org.assertj:assertj-core:3.18.0'
+    testImplementation 'com.opencsv:opencsv:5.4'
+    testImplementation 'org.slf4j:slf4j-api:1.7.30'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.30'
+}
+
+configurations {
+   testCompile
 }
 
 group = 'com.browserstack'
 version = '1.0-SNAPSHOT'
 description = 'browserstack-examples-testng'
 sourceCompatibility = JavaVersion.VERSION_1_8
+
+def browserstackSDKArtifact = configurations.compileClasspath.resolvedConfiguration.resolvedArtifacts.find { it.name == 'browserstack-java-sdk' }
 
 allure {
     autoconfigure = true
@@ -44,6 +51,7 @@ tasks.register('on-prem', Test) {
     } else {
         include '**/OrderTest.class'
     }
+    systemProperty "on-prem", "true"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -51,6 +59,7 @@ tasks.register('on-prem', Test) {
 
 tasks.register('on-prem-suite', Test) {
     useTestNG()
+    systemProperty "on-prem", "true"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -58,15 +67,16 @@ tasks.register('on-prem-suite', Test) {
 
 tasks.register('bstack-single', Test) {
     useTestNG() {
-        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+        dependsOn clean
+        useDefaultListeners = true
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
     }
     if (project.hasProperty('test-name')) {
         include '**/' + project.property('test-name') + '.class'
     } else {
         include '**/OrderTest.class'
     }
-    systemProperty "environment", "remote"
-    systemProperty "testType", "single"
+    systemProperty "browserstack-local", "false"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -74,15 +84,16 @@ tasks.register('bstack-single', Test) {
 
 tasks.register('bstack-local', Test) {
     useTestNG() {
-        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+        dependsOn clean
+        useDefaultListeners = true
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
     }
     if (project.hasProperty('test-name')) {
         include '**/' + project.property('test-name') + '.class'
     } else {
         include '**/OrderTest.class'
     }
-    systemProperty "environment", "remote"
-    systemProperty "testType", "local"
+    systemProperty "browserstack-local", "true"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -90,12 +101,12 @@ tasks.register('bstack-local', Test) {
 
 tasks.register('bstack-local-parallel', Test) {
     useTestNG() {
-        parallel project.property('testngParallel')
-        threadCount Integer.parseInt(project.property('testngThreadCount'))
-        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+        dependsOn clean
+        useDefaultListeners = true
+        suites 'src/test/resources/conf/runners/testng.xml'
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
     }
-    systemProperty "environment", "remote"
-    systemProperty "testType", "local"
+    systemProperty "browserstack-local", "true"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -103,13 +114,11 @@ tasks.register('bstack-local-parallel', Test) {
 
 tasks.register('bstack-local-parallel-devices', Test) {
     useTestNG() {
-        suites 'src/test/resources/conf/runners/testng-browserstack-parallel.xml'
-        parallel project.property('testngParallel')
-        threadCount Integer.parseInt(project.property('testngThreadCount'))
-        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+        dependsOn clean
+        useDefaultListeners = true
+        suites 'src/test/resources/conf/runners/testng.xml'
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
     }
-    systemProperty "environment", "remote"
-    systemProperty "testType", "local"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }
@@ -117,11 +126,12 @@ tasks.register('bstack-local-parallel-devices', Test) {
 
 tasks.register('bstack-parallel', Test) {
     useTestNG() {
-        parallel project.property('testngParallel')
-        threadCount Integer.parseInt(project.property('testngThreadCount'))
-        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+        dependsOn clean
+        useDefaultListeners = true
+        suites 'src/test/resources/conf/runners/testng.xml'
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
     }
-    systemProperty "environment", "remote"
+    systemProperty "browserstack-local", "false"
     systemProperty "testType", "parallel"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
@@ -130,13 +140,11 @@ tasks.register('bstack-parallel', Test) {
 
 tasks.register('bstack-parallel-devices', Test) {
     useTestNG() {
-        suites 'src/test/resources/conf/runners/testng-browserstack-parallel.xml'
-        parallel project.property('testngParallel')
-        threadCount Integer.parseInt(project.property('testngThreadCount'))
-        listeners.add("com.browserstack.test.utils.BrowserstackTestStatusListener")
+        dependsOn clean
+        useDefaultListeners = true
+        suites 'src/test/resources/conf/runners/testng.xml'
+        jvmArgs "-javaagent:${browserstackSDKArtifact.file}"
     }
-    systemProperty "environment", "remote"
-    systemProperty "testType", "parallel"
     testLogging {
         events "PASSED", "FAILED", "SKIPPED"
     }

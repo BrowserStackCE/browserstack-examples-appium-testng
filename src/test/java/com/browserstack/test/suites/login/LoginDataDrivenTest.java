@@ -19,16 +19,16 @@ public class LoginDataDrivenTest extends TestBase {
 
     @Test(dataProvider = "login_error_messages")
     public void validateErrors(String username, String password, String error) {
-        getDriver().findElement(MobileBy.AccessibilityId("menu")).click();
-        getDriver().findElement(MobileBy.AccessibilityId("nav-signin")).click();
+        driver.findElement(MobileBy.AccessibilityId("menu")).click();
+        driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 
-        getDriver().findElement(MobileBy.AccessibilityId("username-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("username-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Accepted usernames are']", username);
 
-        getDriver().findElement(MobileBy.AccessibilityId("password-input")).click();
+        driver.findElement(MobileBy.AccessibilityId("password-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Password for all users']", password);
 
-        getDriver().findElement(MobileBy.AccessibilityId("login-btn")).click();
-        Assert.assertEquals(getDriver().findElement(MobileBy.AccessibilityId("api-error")).getText(), error);
+        driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
+        Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("api-error")).getText(), error);
     }
 }
