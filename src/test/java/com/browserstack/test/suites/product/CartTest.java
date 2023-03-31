@@ -13,13 +13,13 @@ public class CartTest extends TestBase {
         By deleteButton = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Delete']") : MobileBy.id("Delete");
         
         mobileHelper.scrollToElement("add-to-cart-16");
-        getDriver().findElement(MobileBy.AccessibilityId("add-to-cart-16")).click();
+        driver.findElement(MobileBy.AccessibilityId("add-to-cart-16")).click();
         
-        getDriver().findElement(MobileBy.AccessibilityId("nav-cart")).click();
+        driver.findElement(MobileBy.AccessibilityId("nav-cart")).click();
         
-        mobileHelper.swipeLeft(getDriver().findElement(MobileBy.AccessibilityId("cart-item")));
-        getDriver().findElement(deleteButton).click();
+        mobileHelper.swipeLeft(driver.findElement(MobileBy.AccessibilityId("cart-item")));
+        driver.findElement(deleteButton).click();
         
-        Assert.assertEquals(getDriver().findElement(MobileBy.AccessibilityId("number-of-products")).getText(), "0 product(s) found.");
+        Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("number-of-products")).getText(), "0 product(s) found.");
     }
 }
