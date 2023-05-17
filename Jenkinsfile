@@ -17,7 +17,7 @@ node {
 
         stage('Pull code from Github') {
             dir('test') {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/BrowserStackCE/browserstack-examples-appium-testng.git'
+                git branch: 'webinar', changelog: false, poll: false, url: 'https://github.com/BrowserStackCE/browserstack-examples-appium-testng.git'
             }
         }
 
