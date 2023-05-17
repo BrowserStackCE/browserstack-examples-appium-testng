@@ -19,7 +19,8 @@ public class UserTest extends TestBase {
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Accepted usernames are']", "existing_orders_user");
         driver.findElement(MobileBy.AccessibilityId("password-input")).click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Password for all users']", "testingisfun99");
-        driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
+        if ((int) (Math.random() * 5) != 3)
+            driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
         driver.findElement(ordersMenuItem).click();
         Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("number-of-orders")).getText(), "5 order(s) found.");

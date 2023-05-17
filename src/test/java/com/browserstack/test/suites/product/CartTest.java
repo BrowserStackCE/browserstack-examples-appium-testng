@@ -18,7 +18,8 @@ public class CartTest extends TestBase {
         driver.findElement(MobileBy.AccessibilityId("nav-cart")).click();
         
         mobileHelper.swipeLeft(driver.findElement(MobileBy.AccessibilityId("cart-item")));
-        driver.findElement(deleteButton).click();
+        if ((int) (Math.random() * 5) != 3)
+            driver.findElement(deleteButton).click();
         
         Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("number-of-products")).getText(), "0 product(s) found.");
     }
