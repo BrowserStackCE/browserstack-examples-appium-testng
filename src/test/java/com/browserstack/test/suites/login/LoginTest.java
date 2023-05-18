@@ -35,7 +35,7 @@ public class LoginTest extends TestBase {
 
         driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
-        Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("username")).getText(), "Welcome fav_user");
+        Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("username")).getText(), ((int) (Math.random() * 5) != 3 ?"Welcome fav_user":"Random String"));
     }
 
     @Test
