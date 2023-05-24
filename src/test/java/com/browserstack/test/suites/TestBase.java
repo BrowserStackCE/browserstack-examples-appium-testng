@@ -5,6 +5,7 @@ import com.browserstack.test.utils.MobileHelper;
 import com.browserstack.test.utils.ScreenshotListener;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.percy.appium.AppPercy;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,6 +29,7 @@ public class TestBase {
 
     public MobileHelper mobileHelper;
 
+    public AppPercy percy;
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
 
@@ -35,8 +37,8 @@ public class TestBase {
         HashMap<String, String> bstackOptions = new HashMap<>();
         bstackOptions.putIfAbsent("source", "testng-java:sample-sdk:v1.0");
         capabilities.setCapability("bstack:options", bstackOptions);
-        driver = new AppiumDriver(new URL("https://hub.browserstack.com/wd/hub"), capabilities);
-
+        driver = new AndroidDriver(new URL("https://hub.browserstack.com/wd/hub"), capabilities);
+        percy = new AppPercy(driver);
         mobileHelper = new MobileHelper(driver);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }

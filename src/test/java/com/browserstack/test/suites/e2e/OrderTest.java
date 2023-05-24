@@ -10,7 +10,7 @@ public class OrderTest extends TestBase {
 
     @Test
     public void placeOrder() {
-        HomePage page = new HomePage(driver)
+        HomePage page = new HomePage(driver,percy)
                 .navigateToSignIn()
                 .loginWith("fav_user", "testingisfun99")
                 .addProductToCart("12")

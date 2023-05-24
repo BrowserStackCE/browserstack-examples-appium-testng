@@ -30,9 +30,13 @@ node {
                 withEnv(['BROWSERSTACK_USERNAME=' + user]) {
                     sh label: '', returnStatus: true, script:'''#!/bin/bash -l
                 cd test
+                source ~/.bashrc
+                nvm use 16
+                npm install
                 rm -rf browserstack.yml
                 ln src/test/resources/conf/capabilities/${TEST_TYPE}.yml browserstack.yml
-                mvn clean test -P ${TEST_TYPE} 
+                export PERCY_TOKEN=app_6eb101f93b22eb61b34028157970f63c8481a398fbe95061cca8002e3d5ce94b
+                npx percy app:exec -- mvn clean test -P ${TEST_TYPE} 
                 '''
                 }
             }

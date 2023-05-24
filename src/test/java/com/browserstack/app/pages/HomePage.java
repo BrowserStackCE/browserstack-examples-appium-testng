@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.percy.appium.AppPercy;
 import org.openqa.selenium.WebElement;
 
 public class HomePage extends BasePage {
@@ -23,14 +24,15 @@ public class HomePage extends BasePage {
     @iOSXCUITFindBy(id = "Orders")
     private WebElement ordersLink;
 
-    public HomePage(AppiumDriver<?> driver) {
-        super(driver);
+    public HomePage(AppiumDriver<?> driver, AppPercy percy) {
+        super(driver,percy);
     }
 
     public LoginPage navigateToSignIn() {
         menuLink.click();
         signInLink.click();
-        return new LoginPage(driver);
+        percy.screenshot("Login Form");
+        return new LoginPage(driver,percy);
     }
 
     public HomePage addProductToCart(String productId) {
@@ -42,11 +44,13 @@ public class HomePage extends BasePage {
     public OrdersPage navigateToOrders() {
         menuLink.click();
         ordersLink.click();
-        return new OrdersPage(driver);
+        percy.screenshot("Cart Page");
+        return new OrdersPage(driver,percy);
     }
 
     public CartPage openCart() {
         cartLink.click();
-        return new CartPage(driver);
+        percy.screenshot("Orders Page");
+        return new CartPage(driver,percy);
     }
 }
