@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class LoginTest extends TestBase {
 
     @Test
-    public void loginLockedUser() {
+    public void loginLockedUserNativeApp() {
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
         driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 
@@ -23,7 +23,7 @@ public class LoginTest extends TestBase {
     }
 
     @Test
-    public void loginSuccess() {
+    public void loginSuccessNativeApp() {
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
         driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 
@@ -39,7 +39,7 @@ public class LoginTest extends TestBase {
     }
 
     @Test
-    public void loginFail() {
+    public void loginFailNativeApp() {
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
         driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 

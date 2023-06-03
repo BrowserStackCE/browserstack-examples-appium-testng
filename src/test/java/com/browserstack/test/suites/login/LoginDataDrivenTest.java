@@ -18,7 +18,7 @@ public class LoginDataDrivenTest extends TestBase {
     }
 
     @Test(dataProvider = "login_error_messages")
-    public void validateErrors(String username, String password, String error) {
+    public void validateErrorsNativeApp(String username, String password, String error) {
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
         driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 

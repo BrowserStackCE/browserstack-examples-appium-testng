@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class CartTest extends TestBase {
 
     @Test
-    public void deleteProductFromCart() {
+    public void deleteProductFromCartNativeApp() {
         By deleteButton = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Delete']") : MobileBy.id("Delete");
         
         mobileHelper.scrollToElement("add-to-cart-16");

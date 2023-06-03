@@ -13,7 +13,7 @@ public class OfferTest extends TestBase {
     private final Location amsterdam = new Location(52.36, 4.9, 10.0);
 
     @Test
-    public void checkOffersInSingapore() throws InterruptedException {
+    public void checkOffersInSingaporeNativeApp() throws InterruptedException {
         By offersMenuItem = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Offers']") : MobileBy.id("Offers");
 
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
@@ -42,7 +42,7 @@ public class OfferTest extends TestBase {
     }
 
     @Test
-    public void checkOffersInAmsterdam() throws InterruptedException {
+    public void checkOffersInAmsterdamNativeApp() throws InterruptedException {
         By offersMenuItem = mobileHelper.isAndroid() ? MobileBy.xpath("//*[@text = 'Offers']") : MobileBy.id("Offers");
         
         driver.findElement(MobileBy.AccessibilityId("menu")).click();

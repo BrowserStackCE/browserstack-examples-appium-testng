@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class OrderTest extends TestBase {
 
     @Test
-    public void placeOrder() {
+    public void placeOrderNativeApp() {
         HomePage page = new HomePage(driver,percy)
                 .navigateToSignIn()
                 .loginWith("fav_user", "testingisfun99")
