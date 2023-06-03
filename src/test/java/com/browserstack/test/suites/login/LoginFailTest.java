@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class LoginFailTest extends TestBase {
 
     @Test
-    public void loginFail() {
+    public void LoginInvalid() {
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
         driver.findElement(MobileBy.AccessibilityId("nav-signin")).click();
 
