@@ -19,7 +19,7 @@ accessKey: BROWSERSTACK_ACCESS_KEY
 buildName: e2e_webinar
 
 # Use `projectName` to set the name of your project. Example, Marketing Website
-projectName: E2E_WEBINAR
+projectName: BStackDemo-MobileApp-Test-Platform
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
