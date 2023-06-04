@@ -24,7 +24,7 @@ projectName: BStackDemo-MobileApp-Test-Platform
 framework: testng
 
 #app: ./apps/browserstack-demoapp-changed.apk
-app: ./apps/browserstack-demoapp-changed.apk
+app: bs://d9e96d34e9dd292b63557e296ea738bc3db197eb
 # =======================================
 # Platforms (Browsers / Devices to test)
 # =======================================
