@@ -26,7 +26,8 @@ buildIdentifier: '#${BUILD_NUMBER}'
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
-app: ./apps/browserstack-demoapp-changed.apk
+#app: ./apps/browserstack-demoapp-changed.apk
+app:  bs://ed34233cf8c7ddd6c86753d54268c4dfa2ecdfc0
 
 # =======================================
 # Platforms (Browsers / Devices to test)
