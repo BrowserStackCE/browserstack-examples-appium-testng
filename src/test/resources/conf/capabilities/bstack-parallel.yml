@@ -27,7 +27,7 @@ buildIdentifier: '#${BUILD_NUMBER}'
 framework: testng
 
 #app: ./apps/browserstack-demoapp-changed.apk
-app:  bs://ed34233cf8c7ddd6c86753d54268c4dfa2ecdfc0
+app: ./apps/browserstack-demoapp-changed.apk
 
 # =======================================
 # Platforms (Browsers / Devices to test)
