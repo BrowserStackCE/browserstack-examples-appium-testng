@@ -21,7 +21,7 @@ buildName: browserstack-demo-mobileapp-regression-run
 # Use `projectName` to set the name of your project. Example, Marketing Website
 projectName: BStackDemo-MobileApp-Test-Platform
 
-buildIdentifier: '#${BUILD_NUMBER}
+buildIdentifier: '#${BUILD_NUMBER}'
 
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
