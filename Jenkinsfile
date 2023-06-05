@@ -35,7 +35,7 @@ node {
                 npm install
                 rm -rf browserstack.yml
                 ln src/test/resources/conf/capabilities/${TEST_TYPE}.yml browserstack.yml
-                export PERCY_TOKEN=app_6eb101f93b22eb61b34028157970f63c8481a398fbe95061cca8002e3d5ce94b
+                export PERCY_TOKEN==${PERCY_TOKEN}
                 npx percy app:exec -- mvn clean test -P ${TEST_TYPE} 
                 '''
                 }
@@ -49,7 +49,7 @@ node {
 //         stage('Upload to Test Management') {
 //             browserstack(credentialsId: "${params.BROWSERSTACK_USERNAME}") {
                 
-//                 withEnv(['TEST_MANAGEMENT_API_TOKEN=8a1598ba-531e-4264-ad52-e8d73d1be900']) {
+//                 withEnv(['TEST_MANAGEMENT_API_TOKEN==${TEST_MANAGEMENT_TOKEN}']) {
 //                     sh label: '', returnStatus: true, script:'''#!/bin/bash -l
                 
 //                 export TEST_MANAGEMENT_API_TOKEN=$TEST_MANAGEMENT_API_TOKEN
