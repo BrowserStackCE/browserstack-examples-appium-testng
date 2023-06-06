@@ -19,7 +19,7 @@ accessKey: BROWSERSTACK_ACCESS_KEY
 buildName: bstackdemo-app-regression-run
 
 # Use `projectName` to set the name of your project. Example, Marketing Website
-projectName: BStackDemo-MobileApp-Test-Platform
+projectName: bstackdemo-regression-mobileApp-tests
 
 buildIdentifier: '#${BUILD_NUMBER}'
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
