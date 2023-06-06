@@ -1,0 +1,42 @@
+name: BrowserStack Tests
+
+on:
+  push:
+    branches:
+      - webinar
+
+jobs:
+  run_tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Pull code from GitHub
+        run: |
+          git clone --branch webinar --depth 1 https://github.com/BrowserStackCE/browserstack-examples-appium-testng.git test
+
+      - name: Install Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+
+      - name: Install dependencies
+        run: |
+          cd test
+          mvn install --DskipTests
+
+      - name: Run Tests
+        run: |
+          cd test
+          export BROWSERSTACK_USERNAME=$BROWSERSTACK_USERNAME
+          export PERCY_TOKEN=$PERCY_TOKEN
+          npx percy app:exec -- mvn clean test -P bstack-parallel-regression
+

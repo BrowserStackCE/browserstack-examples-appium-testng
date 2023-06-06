@@ -1,0 +1,54 @@
+trigger:
+  branches:
+    include:
+      - webinar
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: PullCode
+    displayName: 'Pull code from Github'
+    jobs:
+      - job: PullCodeJob
+        displayName: 'Pull code'
+        steps:
+          - checkout: self
+          - script: |
+              git clone --branch webinar --no-checkout --single-branch --depth 1 https://github.com/BrowserStackCE/browserstack-examples-appium-testng.git
+              mv browserstack-examples-appium-testng test
+
+  - stage: RunTest
+    displayName: 'Run Test'
+    jobs:
+      - job: RunTestJob
+        displayName: 'Run Test'
+        steps:
+          - task: UseNode@1
+            inputs:
+              version: 16
+          - script: |
+              cd test
+              npm install
+              export BROWSERSTACK_USERNAME=$(BROWSERSTACK_USERNAME)
+              export BROWSERSTACK_ACCESS_KEY=$(BROWSERSTACK_ACCESS_KEY)
+              export PERCY_TOKEN=$(PERCY_TOKEN)
+              npx percy app:exec -- mvn clean test -P bstack-parallel-regression
+
+  - stage: GenerateReport
+    displayName: 'Generate Report'
+    jobs:
+      - job: GenerateReportJob
+        displayName: 'Generate Report'
+        steps:
+        # Add steps to generate the report here
+
+  - stage: FailureHandling
+    displayName: 'Failure Handling'
+    jobs:
+      - job: FailureHandlingJob
+        displayName: 'Failure Handling'
+        steps:
+          - script: |
+              echo $(Build.JobName) failed.
+              exit 1

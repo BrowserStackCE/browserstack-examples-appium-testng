@@ -18,7 +18,6 @@ accessKey: BROWSERSTACK_ACCESS_KEY
 # executions will be grouped together on BrowserStack
 buildName: browserstack-demo-mobileapp-regression-run
 
-
 # Use `projectName` to set the name of your project. Example, Marketing Website
 projectName: BStackDemo-MobileApp-Test-Platform
 
