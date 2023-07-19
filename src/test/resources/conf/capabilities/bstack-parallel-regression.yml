@@ -22,6 +22,8 @@ buildName: bstackdemo-MobileTest-RegressionRun
 projectName: bstackdemo-MobileAppTest-regression-run
 
 buildIdentifier: '#${BUILD_NUMBER}'
+
+testObservability: true
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
