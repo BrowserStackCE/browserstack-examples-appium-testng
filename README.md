@@ -248,7 +248,7 @@ In this section, we will run the tests in parallel on a single device on Browser
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
@@ -287,7 +287,7 @@ In this section, we will run the tests in parallel on multiple devices on Browse
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
@@ -338,7 +338,7 @@ In this section, we will run the tests in parallel on multiple devices on Browse
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
@@ -375,7 +375,7 @@ In this section, we will run the test cases on a mobile application using a loca
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file:
 
     - For \*nix based and Mac machines:
 
