@@ -196,19 +196,19 @@ In this section, we will run a single test on an Android device on Browserstack.
 
 - How to run the test?
 
-  - Copy the capabilities to the root of the project:
+  - Set Environment Variable to pick desired YML file.
 
     - For \*nix based and Mac machines:
 
     ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-single.yml browserstack.yml
+    
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/browserstack-single.yml"
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-single.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\browserstack-single.yml"
     ```
 
    - To run the default test scenario (e.g. End to End Scenario) on a BrowserStack device, use the following command:
@@ -253,14 +253,13 @@ In this section, we will run the tests in parallel on a single device on Browser
     - For \*nix based and Mac machines:
 
     ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-parallel.yml browserstack.yml
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/browserstack-parallel.yml"
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-parallel.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\browserstack-parallel.yml"
     ```
 
   To run the entire test suite in parallel on a single BrowserStack device, use the following command:
@@ -293,14 +292,13 @@ In this section, we will run the tests in parallel on multiple devices on Browse
     - For \*nix based and Mac machines:
 
     ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-parallel-devices.yml browserstack.yml
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/browserstack-parallel-devices.yml"
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-parallel-devices.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\browserstack-parallel-devices.yml"
     ```
 
 
@@ -345,14 +343,13 @@ In this section, we will run the tests in parallel on multiple devices on Browse
     - For \*nix based and Mac machines:
 
     ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-local.yml browserstack.yml
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/browserstack-local.yml"
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-local.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\browserstack-local.yml"
     ```
 
    - To run the default test scenario (e.g. End to End Scenario) on a single BrowserStack device using BrowserStackLocal, use the following command:
@@ -383,14 +380,13 @@ In this section, we will run the test cases on a mobile application using a loca
     - For \*nix based and Mac machines:
 
     ```sh
-    rm -f -- browserstack.yml
-    ln src/test/resources/conf/capabilities/browserstack-local-parallel-devices.yml browserstack.yml
+    export BROWSERSTACK_CONFIG_FILE="src/test/resources/conf/capabilities/browserstack-local-parallel-devices.yml"
     ```
 
     - For Windows:
 
     ```sh
-    del /f "browserstack.yml" && copy /y .\src\test\resources\conf\capabilities\browserstack-local-parallel-devices.yml browserstack.yml
+    set BROWSERSTACK_CONFIG_FILE="src\test\resources\conf\capabilities\browserstack-local-parallel-devices.yml"
     ```
 
   To run the entire test suite in parallel on multiple BrowserStack devices using BrowserStackLocal, use the following command:
