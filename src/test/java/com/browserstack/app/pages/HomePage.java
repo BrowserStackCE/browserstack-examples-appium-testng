@@ -1,6 +1,6 @@
 package com.browserstack.app.pages;
 
-import com.browserstack.AppAppPercySDK;
+
 import com.browserstack.AppPercySDK;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
