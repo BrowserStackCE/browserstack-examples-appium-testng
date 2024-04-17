@@ -3,7 +3,6 @@ package com.browserstack.app.pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import io.percy.appium.AppPercy;
 import org.openqa.selenium.WebElement;
 
 public class CheckoutPage extends BasePage {
@@ -31,8 +30,8 @@ public class CheckoutPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "submit-btn")
     private WebElement checkoutButton;
 
-    public CheckoutPage(AppiumDriver<?> driver, AppPercy percy) {
-        super(driver,percy);
+    public CheckoutPage(AppiumDriver<?> driver) {
+        super(driver);
     }
 
     public ConfirmationPage enterShippingDetails(String firstname, String lastname, String address, String state, String postcode) {
@@ -43,6 +42,6 @@ public class CheckoutPage extends BasePage {
         postcodeInput.sendKeys(postcode);
         driver.hideKeyboard();
         checkoutButton.click();
-        return new ConfirmationPage(driver,percy);
+        return new ConfirmationPage(driver);
     }
 }

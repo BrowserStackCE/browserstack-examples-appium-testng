@@ -28,8 +28,8 @@ buildIdentifier: '#${BUILD_NUMBER}'
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
-#app: ./apps/browserstack-demoapp-changed.apk
-app: bs://d9e96d34e9dd292b63557e296ea738bc3db197eb
+app: ./apps/browserstack-demoapp-changed.apk
+#app: browserstack-demoapp.apk
 
 # =======================================
 # Platforms (Browsers / Devices to test)
@@ -78,3 +78,7 @@ networkLogs: true # <boolean> Set to true to enable HAR logs capturing
 consoleLogs: verbose # <string> Remote browser's console debug levels to be printed (Default: errors)
 # Available options are `disable`, `errors`, `warnings`, `info`, `verbose` (Default: errors)
 
+# test observability for insights and debugging
+# visual testings
+percy: true
+percyCaptureMode: manual

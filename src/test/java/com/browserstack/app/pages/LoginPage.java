@@ -4,7 +4,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import io.percy.appium.AppPercy;
 
 public class LoginPage extends BasePage {
     @AndroidFindBy(accessibility = "username-input")
@@ -19,8 +18,8 @@ public class LoginPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "login-btn")
     private MobileElement logInButton;
 
-    public LoginPage(AppiumDriver<?> driver, AppPercy percy) {
-        super(driver,percy);
+    public LoginPage(AppiumDriver<?> driver) {
+        super(driver);
     }
 
     public HomePage loginWith(String username, String password) {
@@ -30,6 +29,6 @@ public class LoginPage extends BasePage {
         passwordInput.click();
         mobileHelper.selectFromPickerWheel("//XCUIElementTypePickerWheel[@value='Password for all users']", password);
         logInButton.click();
-        return new HomePage(driver,percy);
+        return new HomePage(driver);
     }
 }
