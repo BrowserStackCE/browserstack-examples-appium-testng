@@ -16,12 +16,12 @@ accessKey: BROWSERSTACK_ACCESS_KEY
 # Ensure you add a dynamic identifier, like an incremental build number from your
 # CI/CD or timestamp at the end of every build; otherwise tests from different
 # executions will be grouped together on BrowserStack
-buildName: bstackdemo-MobileTest-RegressionRun
+buildName: End-to-End-App-Demo
 
 testObservability: true
 
 # Use `projectName` to set the name of your project. Example, Marketing Website
-projectName: BStackDemo-MobileApp-Test-Platform
+projectName: End-to-End-App-Demo
 
 buildIdentifier: '#${BUILD_NUMBER}'
 

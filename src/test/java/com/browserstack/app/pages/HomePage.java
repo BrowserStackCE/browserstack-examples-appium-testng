@@ -1,11 +1,14 @@
 package com.browserstack.app.pages;
 
-import com.browserstack.PercySDK;
+import com.browserstack.AppAppPercySDK;
+import com.browserstack.AppPercySDK;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.percy.appium.lib.ScreenshotOptions;
 import org.openqa.selenium.WebElement;
+
 
 public class HomePage extends BasePage {
     @AndroidFindBy(accessibility = "menu")
@@ -29,9 +32,10 @@ public class HomePage extends BasePage {
     }
 
     public LoginPage navigateToSignIn() {
+        AppPercySDK.screenshot(driver,"Home Page");
         menuLink.click();
         signInLink.click();
-        PercySDK.screenshot(driver,"Login Form");
+        AppPercySDK.screenshot(driver,"Login Form");
         return new LoginPage(driver);
     }
 
@@ -44,13 +48,13 @@ public class HomePage extends BasePage {
     public OrdersPage navigateToOrders() {
         menuLink.click();
         ordersLink.click();
-        PercySDK.screenshot(driver,"Cart Page");
+        AppPercySDK.screenshot(driver,"Cart Page");
         return new OrdersPage(driver);
     }
 
     public CartPage openCart() {
         cartLink.click();
-        PercySDK.screenshot(driver,"Orders Page");
+        AppPercySDK.screenshot(driver,"Orders Page");
 
         return new CartPage(driver);
     }
