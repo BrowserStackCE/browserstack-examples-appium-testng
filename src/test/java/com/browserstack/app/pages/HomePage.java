@@ -32,10 +32,11 @@ public class HomePage extends BasePage {
     }
 
     public LoginPage navigateToSignIn() {
-        AppPercySDK.screenshot(driver,"Home Page");
+      //  AppPercySDK.screenshot(driver,"Home Page");
         menuLink.click();
         signInLink.click();
-        AppPercySDK.screenshot(driver,"Login Form");
+     //   AppPercySDK.screenshot(driver,"Login Form");
+
         return new LoginPage(driver);
     }
 
@@ -48,13 +49,13 @@ public class HomePage extends BasePage {
     public OrdersPage navigateToOrders() {
         menuLink.click();
         ordersLink.click();
-        AppPercySDK.screenshot(driver,"Cart Page");
+        // AppPercySDK.screenshot(driver,"Cart Page");
         return new OrdersPage(driver);
     }
 
     public CartPage openCart() {
         cartLink.click();
-        AppPercySDK.screenshot(driver,"Orders Page");
+      //  AppPercySDK.screenshot(driver,"Orders Page");
 
         return new CartPage(driver);
     }

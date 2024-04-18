@@ -21,6 +21,7 @@ buildName: End-to-End-App-Demo
 testObservability: true
 
 # Use `projectName` to set the name of your project. Example, Marketing Website
+#projectName: End-to-End-App-Demo
 projectName: End-to-End-App-Demo
 
 buildIdentifier: '#${BUILD_NUMBER}'
@@ -28,7 +29,7 @@ buildIdentifier: '#${BUILD_NUMBER}'
 # Use `framework` to set the framework of your project. Example, testng, cucumber, cucumber-testng
 framework: testng
 
-app: ./apps/browserstack-demoapp-changed.apk
+app: ./apps/browserstack-demoapp.apk
 #app: browserstack-demoapp.apk
 
 # =======================================
@@ -81,4 +82,4 @@ consoleLogs: verbose # <string> Remote browser's console debug levels to be prin
 # test observability for insights and debugging
 # visual testings
 percy: true
-percyCaptureMode: manual
+percyCaptureMode: auto
