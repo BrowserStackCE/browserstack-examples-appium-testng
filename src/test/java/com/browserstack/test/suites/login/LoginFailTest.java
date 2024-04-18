@@ -20,6 +20,14 @@ public class LoginFailTest extends TestBase {
 
         driver.findElement(MobileBy.AccessibilityId("login-btn")).click();
         driver.findElement(MobileBy.AccessibilityId("menu")).click();
-        Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("username")).getText(), "Welcome fav_user");
+
+
+        if (Math.random() < 0.5) {
+            Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("username")).getText(), "Welcome fav");
+        } else {
+            Assert.assertEquals(driver.findElement(MobileBy.AccessibilityId("username")).getText(), "Welcome fav_user");
+        }
+
+
     }
 }
