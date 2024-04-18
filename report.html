@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Report Dashboard</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1976d2;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        .header img {
+            max-width: 180px;
+            max-height: 50px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-gap: 30px;
+            padding: 30px;
+        }
+
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            padding: 24px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .link:hover {
+            background-color: #f5f5f5;
+        }
+
+        .icon {
+            font-size: 36px;
+            margin-right: 20px;
+            color: #1976d2;
+        }
+
+        .link-text h3 {
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .link-text p {
+            font-size: 16px;
+            margin: 6px 0 0;
+        }
+
+        .summary-table {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 30px;
+        }
+
+        .summary-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        .summary-table th, .summary-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-table th {
+            background-color: #f5f5f5;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>App Automation Report Dashboard</h1>
+    <img src="https://browserstack.wpenginepowered.com/wp-content/themes/browserstack/img/bstack-logo-global.svg" alt="BrowserStack Logo">
+</div>
+
+<div class="summary-table">
+    <table>
+        <thead>
+        <tr>
+            <th>Project Name</th>
+            <th>Build Name</th>
+            <th>Last Updated</th>
+            <th>Duration</th>
+            <th>User</th>
+            <th>Build Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>End-to-End-App-Demo</td>
+            <td>End-to-End-App-Demo</td>
+            <td>April 18, 2024</td>
+            <td>18 Apr 2024 14:11 UTC</td>
+            <td>Sanket Mali</td>
+            <td>Success</td>
+        </tr>
+        <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <!-- Test Automation Section -->
+    <div class="section">
+        <div class="section-title">Test Automation</div>
+        <a class="link" href="https://app-automate.browserstack.com/dashboard/v2/builds" target="_blank">
+            <i class="icon fas fa-rocket"></i>
+            <div class="link-text">
+                <h3>App Automate</h3>
+                <p>BrowserstackDemo-Web-Automation-Regression</p>
+            </div>
+        </a>
+        <a class="link" href="https://percy.io/9560f98d/End-to-End-App-Demo" target="_blank">
+            <i class="icon fas fa-image"></i>
+            <div class="link-text">
+                <h3>App Percy</h3>
+                <p>BrowserstackDemo-WebVisual-Automation-Regression</p>
+            </div>
+        </a>
+    </div>
+
+    <!-- Management & Optimization Section -->
+    <div class="section">
+        <div class="section-title">Management & Optimization</div>
+        <a class="link" href="https://test-management.browserstack.com/projects/148337/test-runs target="_blank">
+            <i class="icon fas fa-tasks"></i>
+            <div class="link-text">
+                <h3>Test Management</h3>
+                <p>Manage Test Runs</p>
+            </div>
+        </a>
+        <a class="link" href="https://observability.browserstack.com/projects/End-to-End-App-Demo/builds" target="_blank">
+            <i class="icon fas fa-chart-line"></i>
+            <div class="link-text">
+                <h3>Testing Observability</h3>
+                <p>Testing Trends</p>
+            </div>
+        </a>
+    </div>
+</div>
+</body>
+</html>
