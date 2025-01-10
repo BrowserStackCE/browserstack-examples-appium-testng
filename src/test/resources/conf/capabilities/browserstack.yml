@@ -83,3 +83,18 @@ consoleLogs: verbose # <string> Remote browser's console debug levels to be prin
 # visual testings
 percy: true
 percyCaptureMode: auto
+
+accessibility: true
+accessibilityOptions:
+  # Scanner configuration: WCAG version
+  # Optional: wcag2A / wcag2aa / wcag21a / wcag21aa / wcag21aaa
+  # Default: wcag21aa
+  wcagVersion: wcag21aa
+  # Scanner configuration: Include Best practices issues
+  # Optional boolean to include best practice issues (`default: false`)
+  # true/false
+  includeIssueType:
+    bestPractice: false
+  # Scanner processing timeout at end of test case (0-30 seconds, `default: 10`)
+  # Optional numeric value
+  scannerProcessingTimeout: 10
